@@ -1,0 +1,124 @@
+{
+  "account" : [
+    {
+  		"question": "I have forgotten my password. How do I login?",
+  		"answer": [
+  			"<ul>",
+  			"<li> You can reset your password by clicking on “Reset your password” link and following the instructions to create a new password. </li>",
+        "<li> If you experience any difficulties please call our 24-7 Help Desk for assistance on 1 (800) 334-3570. </li>",
+  			"</ul>"
+  		]
+  	},
+  	{
+  		"question": "What IDs can I use?",
+  		"answer": [
+  			"<ul>",
+  			"<li>",
+        "You can use the following IDs and they should still be valid:",
+  			"<ol>",
+        "<li> U.S. Driver's License </li>",
+  			"<li> U.S. Passport </li>",
+        "</ol>",
+        "</li>",
+  			"</ul>"
+  		]
+  	},
+  	{
+  		"question": "How do I update my email/phone/address?",
+  		"answer": [
+        "<ul>",
+  			"<li> Please login in to your account at the Kiosk to update your email and/or phone number. </li>",
+  			"<li> To update your address please call our 24-7 Help Desk team on 1 (800) 334-3570. </li>",
+			  "</ul>"
+  		]
+  	},
+  	{
+  		"question": "I do not have the exact cash amount can I pay by credit or debit card?",
+  		"answer": [
+        "<ul>",
+  			"<li> All transactions for Alon Financial Services are CASH ONLY. </li>",
+  			"<li> Credit and debit card payments are not accepted. </li>",
+  			"</ul>"
+  		]
+  	}
+  ],
+  "transaction" : [
+    {
+  		"question": "What is limit for Check Cashing transactions?",
+  		"answer": [
+        "<ul>",
+  			"<li> Each check must be up to $#MAX_AMOUNT to be cashed at an Alon 7-Eleven store. </li>",
+        "<li> We cannot cash a single check with the value of more than $#MAX_AMOUNT. </li>",
+  			"</ul>"
+  		]
+  	},
+    {
+  		"question": "What are the fees for the financial services transaction?",
+  		"answer": [
+        "<ul>",
+  			"<li> You can check the fees and foreign exchange rates (if applicable) on the Kiosk. </li>",
+        "<li> The fees depend on the type of transaction, payment amount, prevailing exchange rates at the time and the destination country (if applicable). </li>",
+  			"</ul>"
+  		]
+  	}
+  ],
+  "voucher" : [
+    {
+  		"question": "My voucher has expired, what do I do?",
+  		"answer": [
+        "<ul>",
+  			"<li> If your voucher is not used within the 30 minutes it will expire.  You can create another voucher at the Kiosk and present that along with your ID and cash to the store operator at the counter. </li>",
+  			"<li> You will not need to register your details again. Simply login and create another voucher. </li>",
+  			"</ul>"
+  		]
+  	},
+  	{
+  		"question": "I typed in the wrong details?",
+  		"answer": [
+        "<ul>",
+  			"<li> Did you type something incorrectly? No problem.  Simply login to your account and edit your details or call one of our 24-7 Help Desk team members on 1 (800) 334-3570 for assistance. </li>",
+  			"</ul>"
+  		]
+  	},
+  	{
+  		"question": "What do I do if I change my mind after preparing a voucher?",
+  		"answer": [
+        "<ul>",
+  			"<li> No problem at all! If you do not want to proceed with your transaction now, you can come back another time and just login to create another voucher for your transaction. </li>",
+  			"<li> You can discard the unused voucher you just created. </li>",
+  			"<li> A voucher is only valid for 30 minutes. If it is not processed within the 30 minutes, it will expire and a new voucher will need to be created. </li>",
+  			"</ul>"
+  		]
+  	}
+  ],
+  "limits" : [
+  	{
+  		"question": "The check scanner cannot read my check. What do I do?",
+  		"answer": [
+        "<ul>",
+  			"<li> Is the check handwritten? Handwritten checks cannot be cashed at Alon 7-Eleven stores. </li>",
+			  "<li> Only printed checks are cashed at Alon 7-Eleven stores. </li>",
+			  "<li> Ensure that the check is inserted correctly based on the instructions displayed on the screen. </li>",
+			  "<li> Ensure there are no folded corners on the check, no staples and no paper clips. </li>",
+  			"</ul>"
+  		]
+  	},
+    {
+  		"question": "My printed check is not being read by the check scanner. What do I do?",
+  		"answer": [
+       		"<ul>",
+				  "<li> Please call our 24-7 Help Desk team on 1 (800) 334-3570. </li>",
+  			"</ul>"
+  		]
+  	},
+    {
+  		"question": "Why was the transaction rejected at the POS after the kiosk showed that everything was OK?",
+  		"answer": [
+        "<ul>",
+  			"<li> The voucher produced at the kiosk is valid for 30 minutes. </li>",
+  			"<li> Once the voucher has expired the details will need to be re-entered on the Kiosk and a new voucher will be provided. </li>",
+  			"</ul>"
+  		]
+  	}
+  ]
+}
