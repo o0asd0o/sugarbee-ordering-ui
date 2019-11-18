@@ -1,6 +1,0 @@
-node_modules/**
-public/**
-build/**
-index.development.html
-index.production.html
-server.bundle.js

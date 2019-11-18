@@ -1,0 +1,36 @@
+.my-drawer {
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar {
+  background-color: #fff;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar .am-list {
+  width: 300px;
+  padding: 0;
+}
+
+.sc-example {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-left: 0px !important;
+  margin-bottom: 10px;
+}
+
+.pName {
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.pNum {
+  font-size: 12px;
+  margin-top: 0px;
+}
+.pOrder {
+  font-size: 12px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
