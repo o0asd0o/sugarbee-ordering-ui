@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { SegmentedControl, WingBlank } from 'antd-mobile';
+import { SegmentedControl, WingBlank, Button } from 'antd-mobile';
 import ItemView from './ItemView'
 import OrderView from './OrderView'
+import { Link } from 'react-router-dom'
 
 class Footer extends Component {
 
     state = {
         value: true
     }
+
   onChange = (e) => {
     // console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
     if (e.nativeEvent.selectedSegmentIndex === 0) {
@@ -29,7 +31,7 @@ class Footer extends Component {
   render() {
     return (
         <div>
-            <p>{this.state.value ? <ItemView /> : <OrderView />}</p>
+            <div>{this.state.value ? <ItemView /> : <OrderView />}</div>
             <WingBlank size="lg" className="sc-example">
                 <SegmentedControl
                     values={['Item View', 'Order View']} 
@@ -37,6 +39,9 @@ class Footer extends Component {
                     onValueChange={this.onValueChange}
                     tintColor= '#F1C40F'
                 />
+                <Button size="small" style={{ background: '#F1C40F', color: 'white'}}>
+                    <Link style={{ color: 'white' }} to="/neworder">Add an order</Link>
+                </Button>
             </WingBlank>
         </div>
     );

@@ -1,6 +1,6 @@
 .my-drawer {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
 .my-drawer .am-drawer-sidebar {
@@ -18,7 +18,7 @@
   bottom: 0;
   width: 100%;
   margin-left: 0px !important;
-  margin-bottom: 10px;
+  margin-bottom: 3px;
 }
 
 .pName {
@@ -34,3 +34,15 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+/* .btnStyle2 {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #F1C40F;
+  border: 1px solid #F1C40F;
+  color: white;
+  border-radius: 5px;
+  margin-top: 2px;
+  font-weight: bold;
+} */
