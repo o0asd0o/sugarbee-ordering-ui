@@ -1,3 +1,6 @@
+body, html {
+  height: 100%;
+}
 .my-drawer {
   position: relative;
   overflow: hidden;
@@ -20,6 +23,13 @@
   margin-left: 0px !important;
   margin-bottom: 3px;
 }
+.sc-example1 {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-left: 0px !important;
+  margin-bottom: 1px;
+}
 
 .pName {
   font-weight: bold;
@@ -35,14 +45,11 @@
   margin-bottom: 0px;
 }
 
-/* .btnStyle2 {
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background: #F1C40F;
-  border: 1px solid #F1C40F;
-  color: white;
-  border-radius: 5px;
-  margin-top: 2px;
-  font-weight: bold;
+#NewOrder .am-navbar-left {
+  padding-left: 0px;
+}
+
+/* .am-list-body {
+  height: 100px;
+  overflow: auto;
 } */

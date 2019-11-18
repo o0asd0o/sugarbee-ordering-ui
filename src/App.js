@@ -4,7 +4,9 @@ import Header from './components/Header'
 import NewOrder from './components/NewOrder';
 import { Drawer, List, SearchBar } from 'antd-mobile';
 import Footer from './components/Footer'
+
 import './App.css';
+import PickupInput from './components/PickupInput';
 
 
 class App extends Component {
@@ -54,7 +56,8 @@ class App extends Component {
               </React.Fragment>
             )} />
           <Route path="/neworder" component={NewOrder} />
-          </div>
+          <Route path="/pickup" component={PickupInput} />
+        </div>
       </Router>
     )
   }
