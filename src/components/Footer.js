@@ -39,7 +39,7 @@ class Footer extends Component {
                     onValueChange={this.onValueChange}
                     tintColor= '#F1C40F'
                 />
-                <Button size="small" style={{ background: '#F1C40F', color: 'white'}}>
+                <Button size="medium" style={{ background: '#F1C40F', color: 'white'}}>
                     <Link style={{ color: 'white' }} to="/neworder">Add an order</Link>
                 </Button>
             </WingBlank>

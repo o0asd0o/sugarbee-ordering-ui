@@ -17,26 +17,6 @@ if (minDate.getDate() !== maxDate.getDate()) {
   minDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
 }
 
-// function formatDate(date) {
-//   /* eslint no-confusing-arrow: 0 */
-//   const pad = n => n < 10 ? `0${n}` : n;
-//   const dateStr = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-//   const timeStr = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
-//   return `${dateStr} ${timeStr}`;
-// }
-
-// If not using `List.Item` as children
-// The `onClick / extra` props need to be processed within the component
-// const CustomChildren = ({ extra, onClick, children }) => (
-//   <div
-//     onClick={onClick}
-//     style={{ backgroundColor: '#fff', height: '45px', lineHeight: '45px', padding: '0 15px' }}
-//   >
-//     {children}
-//     <span style={{ float: 'right', color: '#888' }}>{extra}</span>
-//   </div>
-// );
-
 class DateInput extends Component {
   state = {
     date: now,
@@ -57,7 +37,7 @@ class DateInput extends Component {
           value={this.state.date}
           onChange={date => this.setState({ date })}
         >
-          <List.Item arrow="horizontal"><span style={{ color: '#888' }}>Date</span></List.Item>
+          <List.Item arrow="horizontal"><span style={{ color: '#B2BABB' }}>Date</span></List.Item>
         </DatePicker>
       </List>
     );

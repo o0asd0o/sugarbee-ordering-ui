@@ -4,9 +4,9 @@ import Header from './components/Header'
 import NewOrder from './components/NewOrder';
 import { Drawer, List, SearchBar } from 'antd-mobile';
 import Footer from './components/Footer'
-
-import './App.css';
 import PickupInput from './components/PickupInput';
+import './App.css';
+
 
 
 class App extends Component {

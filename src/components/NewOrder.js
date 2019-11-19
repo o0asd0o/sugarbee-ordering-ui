@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
-import { List, InputItem, NavBar, Icon, WingBlank } from 'antd-mobile';
+import { List, InputItem, NavBar, Icon, WingBlank, Radio } from 'antd-mobile';
 import { Link } from 'react-router-dom'
 import DateInput from './DateInput';
+import PickupInput from './PickupInput';
+import DeliveryMethod from './DeliveryMethod';
+import OrderInput from './OrderInput';
+import Payment from './Payment'
 
 const Item = List.Item;
 
 class NewOrder extends Component {
 
     state = {
-        clicked: false
+        clicked: false,
+        value: 0,
+        value1: 0
     }
 
     // handleClick = () => {
@@ -18,7 +24,21 @@ class NewOrder extends Component {
     onChange = () => {
         this.setState({ clicked : true })
         
-    } 
+    }
+
+    onChangeRadio = (value) => {
+      console.log('checkbox');
+      this.setState({
+        value,
+      });
+    };
+
+    onChangeRadio1 = (value) => {
+      console.log('checkbox');
+      this.setState({
+        value1: value,
+      });
+    };
 
     inputLabel = () => {
         return {
@@ -31,6 +51,16 @@ class NewOrder extends Component {
     }
 
   render() {
+    const { value, value1 } = this.state;
+    const data = [
+      { value: 0, label: 'Percent' },
+      { value: 1, label: 'Amount' },
+    ];
+
+    const data1 = [
+      { value: 0, label: 'Unpaid' },
+      { value: 1, label: 'Paid' },
+    ];
 
     return (
       <div>
@@ -58,20 +88,60 @@ class NewOrder extends Component {
             <InputItem placeholder="MM-DD-YYYY" onChange={this.onChange} /> */}
             <DateInput />
 
-            <p style={this.inputLabel()}>Pickup Location</p>
-            <InputItem placeholder="Pickup Location" onChange={this.onChange} />
+            {/* <p style={this.inputLabel()}>Pickup Location</p>
+            <InputItem placeholder="Pickup Location" onChange={this.onChange} /> */}
+            <PickupInput />
+
+            <DeliveryMethod />
 
             <p style={this.inputLabel()}>Delivery Address</p>
             <InputItem placeholder="Delivery Address" onChange={this.onChange} />
 
-            <p style={this.inputLabel()}>Orders</p>
-            <InputItem placeholder="Orders" onChange={this.onChange} />
+            {/* <p style={this.inputLabel()}>Orders</p>
+            <InputItem placeholder="Orders" onChange={this.onChange} /> */}
+            <OrderInput />
+            
+            <div style={{ display: 'flex' }}>
+              <div style={{ flexGrow: 10,  }}>
+                <p style={this.inputLabel()}>Discount</p>
+                <InputItem type="number" maxLength="5" placeholder="Discount" onChange={this.onChange} />
+              </div>
 
-            <p style={this.inputLabel()}>Discount</p>
-            <InputItem placeholder="Discount" onChange={this.onChange} />
+              <div style={{ display: 'flex' }} >
+                {data.map(i => (
+                  <Radio 
+                    style={{ flexGrow: 1, textAlign: 'center', marginTop: '20px', color: '#888', fontSize: '12px' }} 
+                    className="my-radio" key={i.value} 
+                    checked={value === i.value} 
+                    onChange={() => this.onChangeRadio(i.value)}>
+                    {i.label}
+                  </Radio>
+                  
+                ))}
+              </div>
+            </div>
+            
+            <p style={{  margin: '0px', marginLeft: '10px', paddingTop: '5px', color: '#888' }}>Payment Status</p>
 
-            <p style={this.inputLabel()}>Payment Status</p>
-            <InputItem placeholder="Payment Status" onChange={this.onChange} />
+            <div style={{ display: 'flex' }}>
+              <div style={{ marginLeft: '10px', marginTop: '13px' }} >
+                {data1.map(i => (
+                  <Radio 
+                    style={{ color: '#888', marginRight: '40px' }} 
+                    className="my-radio" key={i.value} 
+                    checked={value1 === i.value} 
+                    onChange={() => this.onChangeRadio1(i.value)}>
+                    {i.label}
+                  </Radio>
+                ))}
+              </div>
+              <div style={{ flexGrow: 5  }}>
+                <Payment />
+              </div>
+            </div>
+            
+
+            
 
             <p style={this.inputLabel()}>Request</p>
             <InputItem placeholder="Request" onChange={this.onChange} />
