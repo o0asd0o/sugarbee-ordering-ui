@@ -6,7 +6,7 @@ const Item = List.Item;
 class OrderView extends Component {
     render() {
         return (
-            <div style={{ height: '470px', overflow: 'auto' }}>
+            <div style={{ height: '500px', overflow: 'auto' }}>
                 <Item style={{ background: '#FCF3CF' }}>
                     <p className="pName">Em Buenaventura</p>
                     <p className="pNum">0915-787-8744</p>

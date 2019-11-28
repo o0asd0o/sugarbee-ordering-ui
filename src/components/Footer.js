@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { SegmentedControl, WingBlank, Button } from 'antd-mobile';
-import ItemView from './ItemView'
-import OrderView from './OrderView'
+import { SegmentedControl, WingBlank } from 'antd-mobile';
+import ItemView from '../containers/ItemView';
+import OrderView from '../containers/OrderView';
 import { Link } from 'react-router-dom'
 
 class Footer extends Component {
@@ -38,10 +38,12 @@ class Footer extends Component {
                     onChange={this.onChange}
                     onValueChange={this.onValueChange}
                     tintColor= '#F1C40F'
+                    style={{ height: '40px' }}
                 />
-                <Button size="medium" style={{ background: '#F1C40F', color: 'white'}}>
+                {/* <Button size="medium" style={{ background: '#F1C40F', color: 'white'}}>
                     <Link style={{ color: 'white' }} to="/neworder">Add an order</Link>
-                </Button>
+                </Button> */}
+                <p className="floatB"><Link style={{ color: 'white' }} to="/neworder"><i className="fa fa-plus my-float"></i></Link></p>
             </WingBlank>
         </div>
     );

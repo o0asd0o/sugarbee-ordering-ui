@@ -48,21 +48,6 @@ body, html {
 #NewOrder .am-navbar-left {
   padding-left: 0px;
 }
-
-/* .am-picker-col {
-  height: 40px;
-}
-.am-picker-col-content {
-  padding: 0px !important;
-  height: 40px !important;
-}
-.am-picker-col-indicator {
-  top: 0px !important;
-}
-.am-picker-col-mask {
-  background-size: 100% 20px !important;
-} */
-
 .picker-list .am-list-item .am-list-line .am-list-extra {
   flex-basis: initial;
 }
@@ -92,11 +77,33 @@ body, html {
   transform: scaleY(0.5);
 }
 .my-radio .am-radio {
-  padding: 2.5px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 5px;
 }
 .am-radio.am-radio-checked .am-radio-inner:after {
   border-color: #F1C40F !important;
+  top: -7px;
+}
+.ant-select-selection--single .ant-select-selection__rendered {
+  margin-right: 0px;
+}
+.ant-select-selection {
+  border-style: none;
+}
+.floatB {
+  position: fixed;
+	width: 50px;
+	height: 50px;
+	bottom: 40px;
+	right: 20px;
+	background-color:#F1C40F;
+	color:#FFF;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999; 
+}
+.my-float{
+	margin-top: 19px;
 }

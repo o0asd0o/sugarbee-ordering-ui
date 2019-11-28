@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import DateInput from './DateInput';
 import PickupInput from './PickupInput';
 import DeliveryMethod from './DeliveryMethod';
-import OrderInput from './OrderInput';
+import AddOrderNew from './AddOrderNew';
 import Payment from './Payment'
 
 const Item = List.Item;
@@ -23,7 +23,6 @@ class NewOrder extends Component {
 
     onChange = () => {
         this.setState({ clicked : true })
-        
     }
 
     onChangeRadio = (value) => {
@@ -84,12 +83,8 @@ class NewOrder extends Component {
             <p style={this.inputLabel()}>Contact Number</p>
             <InputItem type="number" placeholder="Contact Number" onChange={this.onChange}   />
 
-            {/* <p style={this.inputLabel()}>Date</p>
-            <InputItem placeholder="MM-DD-YYYY" onChange={this.onChange} /> */}
             <DateInput />
 
-            {/* <p style={this.inputLabel()}>Pickup Location</p>
-            <InputItem placeholder="Pickup Location" onChange={this.onChange} /> */}
             <PickupInput />
 
             <DeliveryMethod />
@@ -97,20 +92,18 @@ class NewOrder extends Component {
             <p style={this.inputLabel()}>Delivery Address</p>
             <InputItem placeholder="Delivery Address" onChange={this.onChange} />
 
-            {/* <p style={this.inputLabel()}>Orders</p>
-            <InputItem placeholder="Orders" onChange={this.onChange} /> */}
-            <OrderInput />
+            <AddOrderNew />
             
             <div style={{ display: 'flex' }}>
-              <div style={{ flexGrow: 10,  }}>
+              <div style={{ width: '50%'  }}>
                 <p style={this.inputLabel()}>Discount</p>
                 <InputItem type="number" maxLength="5" placeholder="Discount" onChange={this.onChange} />
               </div>
 
-              <div style={{ display: 'flex' }} >
+              <div style={{ width: '50%', marginTop: '3%' }} >
                 {data.map(i => (
                   <Radio 
-                    style={{ flexGrow: 1, textAlign: 'center', marginTop: '20px', color: '#888', fontSize: '12px' }} 
+                    style={{ color: '#888', fontSize: '12px', paddingLeft: '16px' }} 
                     className="my-radio" key={i.value} 
                     checked={value === i.value} 
                     onChange={() => this.onChangeRadio(i.value)}>
@@ -127,7 +120,7 @@ class NewOrder extends Component {
               <div style={{ marginLeft: '10px', marginTop: '13px' }} >
                 {data1.map(i => (
                   <Radio 
-                    style={{ color: '#888', marginRight: '40px' }} 
+                    style={{ color: '#888', marginRight: '50px' }} 
                     className="my-radio" key={i.value} 
                     checked={value1 === i.value} 
                     onChange={() => this.onChangeRadio1(i.value)}>
@@ -139,9 +132,6 @@ class NewOrder extends Component {
                 <Payment />
               </div>
             </div>
-            
-
-            
 
             <p style={this.inputLabel()}>Request</p>
             <InputItem placeholder="Request" onChange={this.onChange} />
