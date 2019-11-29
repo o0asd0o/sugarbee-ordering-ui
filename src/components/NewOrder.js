@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { List, InputItem, NavBar, Icon, WingBlank, Radio } from 'antd-mobile';
 import { Link } from 'react-router-dom'
 import DateInput from './DateInput';
+import Deadline from './Deadline'
 import PickupInput from './PickupInput';
 import DeliveryMethod from './DeliveryMethod';
 import AddOrderNew from './AddOrderNew';
@@ -16,10 +17,6 @@ class NewOrder extends Component {
         value: 0,
         value1: 0
     }
-
-    // handleClick = () => {
-    //     this.inputRef.focus();
-    // }
 
     onChange = () => {
         this.setState({ clicked : true })
@@ -48,6 +45,8 @@ class NewOrder extends Component {
             display: this.state.clicked ? 'block' : 'none'
         }
     }
+
+
 
   render() {
     const { value, value1 } = this.state;
@@ -81,26 +80,38 @@ class NewOrder extends Component {
             <InputItem id="name" placeholder="Name" onChange={this.onChange} />
 
             <p style={this.inputLabel()}>Contact Number</p>
-            <InputItem type="number" placeholder="Contact Number" onChange={this.onChange}   />
+            <InputItem id="contactNum" type="number" placeholder="Contact Number" onChange={this.onChange}   />
+            
+            <p style={this.inputLabel()}>Email Address</p>
+            <InputItem id="email" placeholder="Email Address" onChange={this.onChange} />
+
+            <p style={this.inputLabel()}>Facebook</p>
+            <InputItem id="facebook" placeholder="Facebook" onChange={this.onChange} />
+
+            <p style={this.inputLabel()}>Instagram</p>
+            <InputItem id="instagram" placeholder="Instagram" onChange={this.onChange} />
 
             <DateInput />
+
+            <Deadline />
 
             <PickupInput />
 
             <DeliveryMethod />
 
             <p style={this.inputLabel()}>Delivery Address</p>
-            <InputItem placeholder="Delivery Address" onChange={this.onChange} />
+            <InputItem id="delAddress" placeholder="Delivery Address" onChange={this.onChange} />
 
+            <p style={{  margin: '0px', marginLeft: '10px', paddingTop: '5px', color: '#888' }}>Order</p>
             <AddOrderNew />
             
             <div style={{ display: 'flex' }}>
               <div style={{ width: '50%'  }}>
                 <p style={this.inputLabel()}>Discount</p>
-                <InputItem type="number" maxLength="5" placeholder="Discount" onChange={this.onChange} />
+                <InputItem id="discount" type="number" maxLength="5" placeholder="Discount" onChange={this.onChange} />
               </div>
 
-              <div style={{ width: '50%', marginTop: '3%' }} >
+              <div style={{ width: '50%', marginTop: '10px' }} >
                 {data.map(i => (
                   <Radio 
                     style={{ color: '#888', fontSize: '12px', paddingLeft: '16px' }} 
@@ -134,10 +145,10 @@ class NewOrder extends Component {
             </div>
 
             <p style={this.inputLabel()}>Request</p>
-            <InputItem placeholder="Request" onChange={this.onChange} />
+            <InputItem id="request" placeholder="Request" onChange={this.onChange} />
 
             <p style={this.inputLabel()}>Special Offers</p>
-            <InputItem placeholder="Special Offers" onChange={this.onChange} />
+            <InputItem id="specialOffers" placeholder="Special Offers" onChange={this.onChange} />
         </List>
         <WingBlank size="lg" className="sc-example1">
             <Item style={{ background: '#F9E79F ', fontWeight: 'bold' }}  extra="Php 3,300.00" multipleLine align="top" wrap>Total</Item>

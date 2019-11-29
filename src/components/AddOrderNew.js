@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import { Select, InputNumber  } from 'antd';
+import { Button } from 'antd-mobile';
 import 'antd/dist/antd.css';
-import { Select } from 'antd';
 
 const { Option } = Select;
-
 
 class AddOrderNew extends Component {
 
@@ -26,10 +26,9 @@ class AddOrderNew extends Component {
     render() {
         return (
             <div style={{ display: 'flex', marginLeft: '15px', color: '#888' }}>
-                <p style={{ marginRight: '47%' }}>Order</p>
                 <Select
                     showSearch
-                    style={{ width: "40%", borderStyle: 'none !important' }}
+                    style={{ width: "50%", marginRight: '5px' }}
                     placeholder="Pick your order"
                     optionFilterProp="children"
                     onChange={this.onChange}
@@ -44,6 +43,14 @@ class AddOrderNew extends Component {
                     <Option value="Cookie">Cookie</Option>
                     <Option value="Cupcake">Cupcake</Option>
                 </Select>
+                <InputNumber min={1} max={50} defaultValue={1} style={{ marginRight: '5px' }} />
+                <Button 
+                    inline 
+                    size="small"
+                    style={{ backgroundColor: '#F1C40F', color: 'white' }}
+                    activeStyle={{ backgroundColor:'#F9E79F' }}
+                >ADD
+                </Button>
            
             </div>
             

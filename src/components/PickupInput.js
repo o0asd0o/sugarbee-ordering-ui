@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Picker, List } from 'antd-mobile';
 
-
 const locations = [
     {
       label: 'Magallanes',
@@ -43,7 +42,7 @@ class PickupInput extends Component {
             onChange={this.onChange} 
             value={this.state.locValue}
         >
-          <List.Item arrow="horizontal"><span style={{ color: '#B2BABB ' }}>Pickup Location</span></List.Item>
+          <List.Item arrow="horizontal"><span className="phStyle">Pickup Location</span></List.Item>
         </Picker>
       </List>
     </div>);

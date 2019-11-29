@@ -89,9 +89,12 @@ body, html {
 .ant-select-selection--single .ant-select-selection__rendered {
   margin-right: 0px;
 }
-.ant-select-selection {
-  border-style: none;
-}
+/* .ant-select-selection {
+  border-color: #F1C40F;
+} */
+/* .ant-select-selection:hover {
+  border-color: #F1C40F;
+} */
 .floatB {
   position: fixed;
 	width: 50px;
@@ -106,4 +109,20 @@ body, html {
 }
 .my-float{
 	margin-top: 19px;
+}
+#name::-webkit-input-placeholder, #contactNum::-webkit-input-placeholder,
+#delAddress::-webkit-input-placeholder, #discount::-webkit-input-placeholder,
+#request::-webkit-input-placeholder, #specialOffers::-webkit-input-placeholder,
+#email::-webkit-input-placeholder, #facebook::-webkit-input-placeholder,
+#instagram::-webkit-input-placeholder {
+  font-size: 14px;
+  color: #888;
+}
+.am-list-item, .am-list-item.am-input-item {
+  padding-left: 10px;
+}
+.phStyle {
+  color: #888; 
+  font-size: 14px;
+  padding-left: -5px;
 }

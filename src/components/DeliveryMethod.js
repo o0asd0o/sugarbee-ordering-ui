@@ -39,7 +39,7 @@ class DeliveryMethod extends Component {
             onChange={this.onChange} 
             value={this.state.metValue}
         >
-          <List.Item arrow="horizontal"><span style={{ color: '#B2BABB ' }}>Delivery Method</span></List.Item>
+          <List.Item arrow="horizontal"><span className="phStyle" >Delivery Method</span></List.Item>
         </Picker>
       </List>
     </div>);
