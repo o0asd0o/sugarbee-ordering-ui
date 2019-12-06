@@ -1,15 +1,152 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Header from './components/Header'
 import NewOrder from './components/NewOrder';
-import { Drawer, List, SearchBar } from 'antd-mobile';
-import Footer from './components/Footer'
+import { Drawer, List, SearchBar, WingBlank, SegmentedControl } from 'antd-mobile';
 import PickupInput from './components/PickupInput';
+import ItemView from './containers/ItemView'
+import OrderView from './containers/OrderView'
 import './App.css';
 
 class App extends Component {
     state = {
         docked: false,
+        value: true,
+        orders: [
+            {
+                id: 1,
+                customerName: "Em Buenaventura",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            },
+            {
+                id: 2,
+                customerName: "Dex Mel",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            },
+            {
+                id: 3,
+                customerName: "Dex Mel",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            },
+            {
+                id: 4,
+                customerName: "Dex Mel",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            },
+            {
+                id: 5,
+                customerName: "Dex Mel",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            },
+            {
+                id: 6,
+                customerName: "Dex Mel",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            },
+            {
+                id: 7,
+                customerName: "Dex Mel",
+                contactNum: "09663601467",
+                email: "em@gmail.com",
+                fb: "Em Buenaventura",
+                ig: "embuenaventura",
+                date: "2019-12-06",
+                deadline: "2019-12-06",
+                pickupLoc: "Magallanes",
+                delMethod: "Lalamove",
+                delAddress: "11 Pureza St.",
+                orderName: "Item 1",
+                discount: "percent",
+                paymentStat: "paid",
+                request: "note card",
+                specialOffer: "free cake",
+                quantity: 1
+            }
+        ]
     }
 
     onDock = (dock) => {
@@ -17,6 +154,22 @@ class App extends Component {
             [dock]: !this.state[dock],
         });
     }
+
+    onChange = (e) => {
+        // console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
+        if (e.nativeEvent.selectedSegmentIndex === 0) {
+            console.log('Item View')
+            this.setState({
+                value: true
+            });
+        }
+        if (e.nativeEvent.selectedSegmentIndex === 1)  {
+            console.log('Order View')
+            this.setState({
+                value: false
+            });
+        }
+      }
     
   render() {
     const sidebar = (
@@ -50,8 +203,29 @@ class App extends Component {
                     docked={this.state.docked}
                 >
                     <SearchBar cancelText="Cancel" placeholder="Search"  />
+
+                    {/* Footer */}
+                    <div>
+                        {this.state.value ?
+                            <div style={{ height: '500px', overflow: 'auto', marginBottom: '40px' }}> 
+                                <ItemView orders={this.state.orders} />
+                            </div> :
+                            <div style={{ height: '500px', overflow: 'auto', marginBottom: '40px' }}>
+                                <OrderView orders={this.state.orders} />
+                            </div>}
+                    </div>
+                    <WingBlank size="lg" className="sc-example">
+                        <SegmentedControl
+                            values={['Item View', 'Order View']} 
+                            onChange={this.onChange}
+                            onValueChange={this.onValueChange}
+                            tintColor= '#F1C40F'
+                            style={{ height: '40px' }}
+                        />
+                        <p className="floatB"><Link style={{ color: 'white' }} to="/neworder"><i className="fa fa-plus my-float"></i></Link></p>
+                    </WingBlank>
+                    {/* Footer */}
                     
-                    <Footer />
                 </Drawer>
                 </React.Fragment>
             )} />

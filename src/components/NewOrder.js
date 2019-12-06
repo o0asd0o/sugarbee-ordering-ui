@@ -13,13 +13,13 @@ const Item = List.Item;
 class NewOrder extends Component {
 
     state = {
-        clicked: false,
+        changed: false,
         value: 0,
         value1: 0
     }
 
     onChange = () => {
-        this.setState({ clicked : true })
+        this.setState({ changed : true })
     }
 
     onChangeRadio = (value) => {
@@ -42,11 +42,9 @@ class NewOrder extends Component {
             marginLeft: '10px', 
             paddingTop: '5px', 
             color: '#888',
-            display: this.state.clicked ? 'block' : 'none'
+            display: this.state.changed ? 'block' : 'none'
         }
     }
-
-
 
   render() {
     const { value, value1 } = this.state;
@@ -67,15 +65,12 @@ class NewOrder extends Component {
             style={{ background: '#F1C40F' }}
             icon={<Icon type="left" /> }
             leftContent={[ <Link style={{ color: 'white' }} to="/">Back</Link> ]}
-            rightContent={[
-                "Edit",
-                // <Icon type="cross" />
-              ]}
+            rightContent={[ "Done" ]}
         >
             Order #001
         </NavBar>
 
-        <List style={{ height: '550px', overflow: 'auto' }}>
+        <List style={{ height: '550px', overflow: 'auto', marginBottom: '40px' }}>
             <p style={this.inputLabel()}>Name</p>
             <InputItem id="name" placeholder="Name" onChange={this.onChange} />
 

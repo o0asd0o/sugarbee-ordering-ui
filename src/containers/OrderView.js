@@ -4,47 +4,16 @@ import { List } from 'antd-mobile'
 const Item = List.Item;
 
 class OrderView extends Component {
+
     render() {
-        return (
-            <div style={{ height: '500px', overflow: 'auto' }}>
-                <Item style={{ background: '#FCF3CF' }}>
-                    <p className="pName">Em Buenaventura</p>
-                    <p className="pNum">0915-787-8744</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                </Item>
-                <Item>
-                    <p className="pName">Dex Mel</p>
-                    <p className="pNum">0915-787-8744</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                </Item>
-                <Item style={{ background: '#FCF3CF' }}>
-                    <p className="pName">Em Buenaventura</p>
-                    <p className="pNum">0915-787-8744</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                </Item>
-                <Item>
-                    <p className="pName">Dex Mel</p>
-                    <p className="pNum">0915-787-8744</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                </Item>
-                <Item style={{ background: '#FCF3CF' }}>
-                    <p className="pName">Em Buenaventura</p>
-                    <p className="pNum">0915-787-8744</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                </Item>
-                <Item>
-                    <p className="pName">Dex Mel</p>
-                    <p className="pNum">0915-787-8744</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                    <p className="pOrder">1 x 8" Dulce de Leche Cake</p>
-                </Item>
-            </div>
-        )
+        return this.props.orders.map((order) => (
+            <Item key={order.id} style={{ background: (order.id%2) ? '#FCF3CF' : 'none' }}>
+                <p className="pName">{order.customerName}</p>
+                <p className="pNum">{order.contactNum}</p>
+                <p className="pOrder">{order.orderName}</p>
+                <p className="pOrder">{order.orderName}</p>
+            </Item>
+        ));
     }
 }
 
