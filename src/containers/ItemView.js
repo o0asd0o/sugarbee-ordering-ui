@@ -7,9 +7,15 @@ class ItemView extends Component {
 
     render() {
         return this.props.orders.map((order) => (
-            <List key={order.id}>
-                <Item style={{ borderBottom: '1px solid #EAECEE' }} extra={order.quantity} multipleLine align="top" wrap>{order.orderName}</Item>
-            </List>
+            <Item
+                wrap
+                multipleLine align="top" 
+                extra={order.quantity}
+                style={{ borderBottom: '1px solid #EAECEE' }}  
+                key={order.id}                
+            >
+                {order.orderName}
+            </Item>
         ));
     }
 }

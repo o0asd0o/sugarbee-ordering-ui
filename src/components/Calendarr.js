@@ -57,6 +57,7 @@ class Calendarr extends Component {
     this.setState({
       show: false
     });
+    console.log()
   }
 
   onCancel = () => {

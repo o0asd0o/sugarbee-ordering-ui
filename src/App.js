@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Header from './components/Header'
 import NewOrder from './components/NewOrder';
 import { Drawer, List, SearchBar, WingBlank, SegmentedControl } from 'antd-mobile';
-import PickupInput from './components/PickupInput';
 import ItemView from './containers/ItemView'
 import OrderView from './containers/OrderView'
 import './App.css';
@@ -25,12 +24,12 @@ class App extends Component {
                 pickupLoc: "Magallanes",
                 delMethod: "Lalamove",
                 delAddress: "11 Pureza St.",
-                orderName: "Item 1",
+                orderName: "Small Tubs Sans Chips",
                 discount: "percent",
                 paymentStat: "paid",
                 request: "note card",
                 specialOffer: "free cake",
-                quantity: 1
+                quantity: 25
             },
             {
                 id: 2,
@@ -44,7 +43,7 @@ class App extends Component {
                 pickupLoc: "Magallanes",
                 delMethod: "Lalamove",
                 delAddress: "11 Pureza St.",
-                orderName: "Item 1",
+                orderName: "Salted Caramel Cake",
                 discount: "percent",
                 paymentStat: "paid",
                 request: "note card",
@@ -63,88 +62,12 @@ class App extends Component {
                 pickupLoc: "Magallanes",
                 delMethod: "Lalamove",
                 delAddress: "11 Pureza St.",
-                orderName: "Item 1",
+                orderName: "Sansrival Chips",
                 discount: "percent",
                 paymentStat: "paid",
                 request: "note card",
                 specialOffer: "free cake",
-                quantity: 1
-            },
-            {
-                id: 4,
-                customerName: "Dex Mel",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Item 1",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 1
-            },
-            {
-                id: 5,
-                customerName: "Dex Mel",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Item 1",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 1
-            },
-            {
-                id: 6,
-                customerName: "Dex Mel",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Item 1",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 1
-            },
-            {
-                id: 7,
-                customerName: "Dex Mel",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Item 1",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 1
+                quantity: 40
             }
         ]
     }
@@ -220,7 +143,7 @@ class App extends Component {
                             onChange={this.onChange}
                             onValueChange={this.onValueChange}
                             tintColor= '#F1C40F'
-                            style={{ height: '40px' }}
+                            style={{ height: '40px', backgroundColor: 'white' }}
                         />
                         <p className="floatB"><Link style={{ color: 'white' }} to="/neworder"><i className="fa fa-plus my-float"></i></Link></p>
                     </WingBlank>
@@ -230,7 +153,6 @@ class App extends Component {
                 </React.Fragment>
             )} />
             <Route path="/neworder" component={NewOrder} />
-            <Route path="/pickup" component={PickupInput} />
         </div>
       </Router>
     )
