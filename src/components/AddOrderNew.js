@@ -49,10 +49,10 @@ class AddOrderNew extends Component {
                 </div>
                 
             
-                <div style={{ display: 'flex', marginLeft: '15px', color: '#888', marginTop: '10px' }}>                
+                <div style={{ display: 'flex', alignItems: 'stretch', marginLeft: '15px', marginRight: '15px', color: '#888', marginTop: '10px' }}>                
                     <Select
                         showSearch
-                        style={{ width: "50%", marginRight: '5px' }}
+                        style={{ width: "60%", marginRight: '5px' }}
                         placeholder="Pick your order"
                         optionFilterProp="children"
                         onChange={this.onChange}
@@ -69,11 +69,11 @@ class AddOrderNew extends Component {
                         <Option value="Cupcake">Salted Caramel Cake</Option>
                         <Option value="Cake">Sansrival Chips</Option>
                     </Select>
-                    <InputNumber min={1} max={50} defaultValue={1} style={{ marginRight: '5px' }} />
+                    <InputNumber min={1} max={50} defaultValue={1} style={{ marginRight: '5px', width: '20%' }} />
                     <Button 
                         inline 
                         size="small"
-                        style={{ backgroundColor: '#F1C40F', color: 'white' }}
+                        style={{ backgroundColor: '#F1C40F', color: 'white', width: '20%' }}
                         activeStyle={{ backgroundColor:'#F9E79F' }}
                     >ADD
                     </Button>

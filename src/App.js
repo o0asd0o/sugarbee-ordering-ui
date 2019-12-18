@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { Drawer, List, SearchBar, WingBlank, SegmentedControl } from 'antd-mobile'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Header from './components/Header'
-import NewOrder from './components/NewOrder';
-import { Drawer, List, SearchBar, WingBlank, SegmentedControl } from 'antd-mobile';
+import NewOrder from './components/NewOrder'
 import ItemView from './containers/ItemView'
 import OrderView from './containers/OrderView'
+import Login from './containers/Login'
 import './App.css';
 
 class App extends Component {
@@ -107,7 +108,7 @@ class App extends Component {
                 }} 
             />
             <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>SUGARBEE</p>
-            <p style={{ textAlign: 'center', color: 'red' }}>Logout</p>
+            <p style={{ textAlign: 'center' }}><Link style={{ color: 'red' }} to="/login">Logout</Link></p>
         </List>
     );
 
@@ -115,6 +116,9 @@ class App extends Component {
       <Router>
         <div>
             <Route exact path="/" render={props => (
+                <Login />
+            )} />
+            <Route exact path="/main" render={props => (
                 <React.Fragment>
                 <Header onDock={this.onDock} />
                 <Drawer
@@ -153,6 +157,7 @@ class App extends Component {
                 </React.Fragment>
             )} />
             <Route path="/neworder" component={NewOrder} />
+            <Route path="/login" component={Login} />
         </div>
       </Router>
     )

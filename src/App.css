@@ -132,3 +132,14 @@ body, html {
 .ant-fullcalendar-column-header .ant-fullcalendar-column-header-inner {
   font-weight: bold;
 }
+.loginCont {
+  margin-left: 30px; 
+  margin-right: 30px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  height: 550px;
+}
+.loginCont .am-list div.am-list-body::before {
+  display: none;
+}

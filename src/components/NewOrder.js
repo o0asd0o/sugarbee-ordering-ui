@@ -125,8 +125,8 @@ class NewOrder extends Component {
             id= "NewOrder"
             style={{ background: '#F1C40F' }}
             icon={<Icon type="left" /> }
-            leftContent={[ <Link style={{ color: 'white' }} to="/">Back</Link> ]}
-            rightContent={[ <Link style={{ color: 'white' }} to="/">Done</Link> ]}
+            leftContent={[ <Link style={{ color: 'white' }} to="/main">Back</Link> ]}
+            rightContent={[ <Link style={{ color: 'white' }} to="/main">Done</Link> ]}
         >
             Order #001
         </NavBar>
@@ -203,13 +203,13 @@ class NewOrder extends Component {
             <p style={{  margin: '0px', marginLeft: '10px', paddingTop: '5px', color: '#888' }}>Order</p>
             <AddOrderNew />
             
-            <div style={{ display: 'flex' }}>
-                <div style={{ width: '50%'  }}>
+            <div style={{ display: 'flex', alignItems: 'stretch' }}>
+                <div style={{ width: '80%'  }}>
                     <p style={this.inputLabel()}>Discount</p>
                     <InputItem id="discount" type="number" maxLength="5" placeholder="Discount" onChange={this.onChange} />
                 </div>
 
-              <div style={{ width: '50%', marginTop: '10px' }} >
+              <div style={{ marginTop: '10px', width: '30%' }} >
                 {data.map(i => (
                     <Radio 
                         style={{ color: '#888', fontSize: '12px', paddingLeft: '16px' }} 
@@ -224,7 +224,8 @@ class NewOrder extends Component {
             
             <p style={{  margin: '0px', marginLeft: '10px', paddingTop: '5px', color: '#888' }}>Payment Status</p>
 
-            <div style={{ display: 'flex' }}>
+            {/* <Payment Status /> */}
+            <div style={{ display: 'flex', alignItems: 'stretch' }}>
               <div style={{ marginLeft: '10px', marginTop: '13px' }} >
                 {data1.map(i => (
                     <Radio 
@@ -236,8 +237,8 @@ class NewOrder extends Component {
                     </Radio>
                 ))}
               </div>
-              <div style={{ flexGrow: 5  }}>
-                {/* <Payment /> */}
+
+              <div style={{ flexGrow: 5 }}>
                 <Picker 
                     data={pay} 
                     cols={1} 
