@@ -83,14 +83,14 @@ class NewOrder extends Component {
         });
     };
 
-    onChangeRadio = (value) => {
+    onChangeDiscount = (value) => {
         console.log('checkbox');
         this.setState({
             value,
         });
     };
 
-    onChangeRadio1 = (value) => {
+    onChangePaymentStat = (value) => {
         console.log('checkbox');
         this.setState({
             value1: value,
@@ -215,7 +215,7 @@ class NewOrder extends Component {
                         style={{ color: '#888', fontSize: '12px', paddingLeft: '16px' }} 
                         className="my-radio" key={i.value} 
                         checked={value === i.value} 
-                        onChange={() => this.onChangeRadio(i.value)}>
+                        onChange={() => this.onChangeDiscount(i.value)}>
                         {i.label}
                     </Radio>
                 ))}
@@ -232,7 +232,7 @@ class NewOrder extends Component {
                         style={{ color: '#888', marginRight: '50px' }} 
                         className="my-radio" key={i.value} 
                         checked={value1 === i.value} 
-                        onChange={() => this.onChangeRadio1(i.value)}>
+                        onChange={() => this.onChangePaymentStat(i.value)}>
                         {i.label}
                     </Radio>
                 ))}

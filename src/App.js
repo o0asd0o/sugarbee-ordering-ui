@@ -79,6 +79,10 @@ class App extends Component {
         });
     }
 
+    onLogout = () => {
+        this.setState({ docked: false })
+    }
+
     onChange = (e) => {
         // console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
         if (e.nativeEvent.selectedSegmentIndex === 0) {
@@ -108,7 +112,9 @@ class App extends Component {
                 }} 
             />
             <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>SUGARBEE</p>
-            <p style={{ textAlign: 'center' }}><Link style={{ color: 'red' }} to="/login">Logout</Link></p>
+            <button onClick={this.onLogout} style={{ border: 'none', background: 'none', marginLeft: '20%' }}>
+                <Link style={{ color: 'red' }} to="/login">Logout</Link>
+            </button>
         </List>
     );
 

@@ -21,12 +21,10 @@ class Login extends Component {
                             marginBottom: '20px'
                         }} 
                     />
-                    {/* <p style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '20px' }}>SUGARBEE</p> */}
 
                     <form>
                         <input type="text" placeholder="username" style={loginInput} />
                         <input type="password" placeholder="password" style={loginInput} />
-                        {/* <input type="submit" value="Submit" style={loginSubmit} /> */}
                         <button style={loginSubmit}><Link style={{ color: 'white' }} to="/main">Submit</Link></button>
                     </form>
                 </List>
@@ -34,15 +32,6 @@ class Login extends Component {
         )
     }
 }
-
-// const loginCont = {
-//     marginLeft: '30px', 
-//     marginRight: '30px',
-//     display: 'flex', 
-//     alignItems: 'center', 
-//     justifyContent: 'center', 
-//     height: '550px',
-// }
 
 const loginInput = {
     width: '100%',
