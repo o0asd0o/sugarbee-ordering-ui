@@ -47,8 +47,6 @@ class AddOrderNew extends Component {
                     <div style={{ width: '83%', fontWeight: 'bold' }}>Sansrival Chips</div>
                     <div style={{ fontWeight: 'bold' }}>20</div>
                 </div>
-                
-            
                 <div style={{ display: 'flex', alignItems: 'stretch', marginLeft: '15px', marginRight: '15px', color: '#888', marginTop: '10px' }}>                
                     <Select
                         showSearch
@@ -63,7 +61,6 @@ class AddOrderNew extends Component {
                         option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                         }
                     >
-                        
                         <Option value="Cookie">Cookie</Option>
                         <Option value="Cupcake">Cupcake</Option>
                         <Option value="Cupcake">Salted Caramel Cake</Option>
@@ -77,10 +74,8 @@ class AddOrderNew extends Component {
                         activeStyle={{ backgroundColor:'#F9E79F' }}
                     >ADD
                     </Button>
-            
                 </div>
             </div>
-            
         )
     }
 }
