@@ -12,65 +12,17 @@ class App extends Component {
     state = {
         docked: false,
         value: true,
-        orders: [
-            {
-                id: 1,
-                customerName: "Em Buenaventura",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Small Tubs Sans Chips",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 25
-            },
-            {
-                id: 2,
-                customerName: "Dex Mel",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Salted Caramel Cake",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 1
-            },
-            {
-                id: 3,
-                customerName: "Dex Mel",
-                contactNum: "09663601467",
-                email: "em@gmail.com",
-                fb: "Em Buenaventura",
-                ig: "embuenaventura",
-                date: "2019-12-06",
-                deadline: "2019-12-06",
-                pickupLoc: "Magallanes",
-                delMethod: "Lalamove",
-                delAddress: "11 Pureza St.",
-                orderName: "Sansrival Chips",
-                discount: "percent",
-                paymentStat: "paid",
-                request: "note card",
-                specialOffer: "free cake",
-                quantity: 40
-            }
-        ]
+        orders: []
+    }
+
+    callApi(){
+        fetch("http://localhost:9000/orders")
+            .then(res => res.json())
+            .then(res => this.setState({orders: res}));
+    }
+
+    componentDidMount(){
+        this.callApi();
     }
 
     onDock = (dock) => {

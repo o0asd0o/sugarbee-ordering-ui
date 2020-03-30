@@ -28,7 +28,7 @@ class OrderView extends Component {
                 <p className="pName">{order.customerName}</p>
                 <p className="pNum">{order.contactNum}</p>
                 <p className="pOrder">{order.orderName}</p>
-                <p className="pOrder">{order.orderName}</p>
+                <p className="pOrder">{order.quantity}</p>
                 </Item>
 
                 <Modal

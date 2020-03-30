@@ -3,6 +3,24 @@ import { List } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 
 class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            apiResponse: []
+        };
+    }
+
+    callApi(){
+        fetch("http://localhost:9000/login")
+            .then(res => res.json())
+            .then(res => this.setState({apiResponse: res}));
+    }
+
+    componentDidMount(){
+        this.callApi();
+    }
+
+
     render() {
         return (
             <div className="loginCont">
@@ -23,6 +41,7 @@ class Login extends Component {
                     />
 
                     <form>
+                        <p>{this.state.apiResponse.map(home => <div>{home.username}</div>)}</p>
                         <input type="text" placeholder="username" style={loginInput} />
                         <input type="password" placeholder="password" style={loginInput} />
                         <button style={loginSubmit}><Link style={{ color: 'white' }} to="/main">Submit</Link></button>
