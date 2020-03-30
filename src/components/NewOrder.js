@@ -231,14 +231,14 @@ class NewOrder extends Component {
                     <Radio 
                         style={{ color: '#888', marginRight: '50px' }} 
                         className="my-radio" key={i.value} 
-                        checked={value1 === i.value} 
+                        checked={value1 === i.value}
                         onChange={() => this.onChangePaymentStat(i.value)}>
                         {i.label}
                     </Radio>
                 ))}
               </div>
 
-              <div style={{ flexGrow: 5 }}>
+              <div style={{ flexGrow: 5,  display: (value1 === 1) ? 'block' : 'none' }}>
                 <Picker 
                     data={pay} 
                     cols={1} 
@@ -251,6 +251,7 @@ class NewOrder extends Component {
                 <List.Item arrow="down">{''}</List.Item>
               </Picker>
               </div>
+
             </div>
 
             <p style={this.inputLabel()}>Request</p>

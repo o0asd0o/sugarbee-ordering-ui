@@ -10,9 +10,9 @@ class OrderView extends Component {
     }
 
     showModal = key => (e) => {
-        e.preventDefault(); // 修复 Android 上点击穿透
+        e.preventDefault(); 
         this.setState({
-            [key]: true,
+            [key]: true
         });
     }
       onClose = key => () => {
@@ -22,9 +22,10 @@ class OrderView extends Component {
     }
 
     render() {
+        
         return this.props.orders.map((order) => (
             <div key={order.id}>
-                <Item  onClick={this.showModal('modal1')} style={{ background: (order.id%2) ? '#FCF3CF' : 'none' }}>
+                <Item  onClick={(this.showModal('modal1'))} style={{ background: (order.id%2) ? '#FCF3CF' : 'none' }}>
                 <p className="pName">{order.customerName}</p>
                 <p className="pNum">{order.contactNum}</p>
                 <p className="pOrder">{order.orderName}</p>
@@ -33,15 +34,15 @@ class OrderView extends Component {
 
                 <Modal
                 visible={this.state.modal1}
-                
                 maskClosable={false}
+                transparent={true}
                 onClose={this.onClose('modal1')}
                 title="Order Summary"
                 footer={[{ text: 'Ok', onPress: () => { console.log('ok'); this.onClose('modal1')(); } }]}
                 wrapProps={{ onTouchStart: this.onWrapTouchStart }}
                 // afterClose={() => { alert('Order Preview'); }}
                 >
-                <div style={{ height: 100, overflow: 'scroll' }}>
+                <div >
                     <table>
                         <tbody>
                             <tr>
@@ -111,6 +112,7 @@ class OrderView extends Component {
 
                         </tbody>
                     </table>
+                    
                 </div>
                 </Modal>
             </div>
