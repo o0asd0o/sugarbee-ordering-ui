@@ -1,12 +1,12 @@
 export const storeLocations = [{
     label: "Magallanes",
-    value: "magallanes",
+    value: "Magallanes",
 }, {
     label: "Paseo Center",
-    value: "paseo_center",
+    value: "Paseo_Center",
 }, {
     label: "BGC Stopover",
-    value: "bgc_stopover",
+    value: "Bgc_Stopover",
 }];
 
 export const deliveryMethods = [{
@@ -27,3 +27,13 @@ export const paymentOptions = [{
     label: "BPI",
     value: "bpi",
 }];
+
+export const paymentStatusData = [
+    { value: 0, label: 'Unpaid' },
+    { value: 1, label: 'Paid' },
+];
+
+export  const discountData = [
+    { value: 0, label: 'Percent' },
+    { value: 1, label: 'Amount' },
+];
