@@ -121,7 +121,7 @@ export const RadioList = styled(Radio)`
     }
 `
 export const PaymentOptionCont = styled.div`
-    width: auto;
+    width: 35%;
     padding-top: 6px;
     .am-list-item .am-list-line .am-list-extra {
         flex-basis: 100%;

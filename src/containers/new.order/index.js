@@ -1,5 +1,4 @@
 import React from "react"
-import { useState } from 'react';
 import { InputItem, Modal, Icon, DatePicker, List, Picker } from "antd-mobile";
 import { Formik } from "formik";
 import AddOrder from "./addorder"
@@ -8,13 +7,13 @@ import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import { Container, NavigationBar, NavLink, LayoutContainer, Label, LabelPicker, RadioContainer, RadioList, PaymentOptionCont, DiscountAmount, DoneButton } from "./components";
 import { deliveryMethods, storeLocations, paymentOptions, paymentStatusData, discountData } from "../../utils/values.dropdown";
 
+import moment from "moment";
+
 // TODO/NOTICE: NOT YET DONE WITH ALL THE FIELDS...
 
 // use the FF:
 
-// const Item = List.Item;
-const nowTimeStamp = Date.now();
-const now = new Date(nowTimeStamp);
+const date = moment().toDate();
 
 const notification = Modal.alert;
 const showErrorNotification = ({ message, description }) => {
@@ -32,38 +31,17 @@ const NewOrder = ({ history }) => {
         deliveryAddress: '',
         request: '',
         specialOffer: '',
-        order: '',
-        date: now,
-        deliveryMethod: 'Lalamove',
-        pickupLocation: 'Magallanes',
-        paymentStatus: 'Unpaid',
-        paymentOption: 'bdo',
-        discountType: 'Percent',
+        orderValue: '',
+        orderQuantity: '',
+        dateOrdered: date,
+        pickupDate: date,
+        deliveryMethod: ['Lalamove'],
+        pickupLocation: ['Magallanes'],
+        paymentOption: ['bdo'],
+        paymentStatus: 0,
+        discountType: 0,
         discountAmount: ''
-    };
-    const [date, setDate] = useState(now)
-    const handleDate = date => {
-        console.log(date);
-        setDate(date);
-    }
-    const [deliveryMethod, setDeliveryMethod] = useState('')
-    const handleDeliveryMethod = deliveryMethod => {
-        console.log(deliveryMethod);
-        setDeliveryMethod(deliveryMethod);
-    }
-    const [pickupLocation, setPickupLocation] = useState('')
-    const handlePickupLocation = pickupLocation => {
-        setPickupLocation(pickupLocation);
-    }
-    const [paymentStatus, setpaymentStatus] = useState(0)
-    const [paymentOption, setpaymentOption] = useState('')
-    const handlepaymentOption = paymentOption => {
-        setpaymentOption(paymentOption);
-    }
-    const [discount, setDiscount] = useState(0)
-    const showPicker = {
-        display: (paymentStatus === 1) ? 'inline-block' : 'none'
-    }
+    };    
 
     const handleSubmit = async (values, actions) => {
         actions.setSubmitting(true);
@@ -150,8 +128,8 @@ const NewOrder = ({ history }) => {
                                 title="Select Date"
                                 extra="Optional"
                                 locale={enUs}
-                                value={date}
-                                onChange={handleDate}
+                                value={props.values.dateOrdered}
+                                onChange={e => props.setFieldValue("dateOrdered", e)}
                             >
                                 <List.Item arrow="horizontal">
                                 <LabelPicker>Date Ordered</LabelPicker>
@@ -163,8 +141,8 @@ const NewOrder = ({ history }) => {
                                 title="Select Date"
                                 extra="Optional"
                                 locale={enUs}
-                                value={date}
-                                onChange={handleDate}
+                                value={props.values.pickupDate}
+                                onChange={e => props.setFieldValue("pickupDate", e)}
                             >
                                 <List.Item arrow="horizontal">
                                 <LabelPicker>Pickup Date</LabelPicker>
@@ -178,9 +156,8 @@ const NewOrder = ({ history }) => {
                                 locale={enUs}
                                 okText="OK" 
                                 dismissText="CANCEL"
-                                value={deliveryMethod}
-                                onChange={handleDeliveryMethod} 
-                                
+                                value={props.values.deliveryMethod}
+                                onChange={e => props.setFieldValue("deliveryMethod", e)} 
                             >
                                 <List.Item arrow="horizontal">
                                 <LabelPicker>Delivery Method</LabelPicker>
@@ -194,8 +171,8 @@ const NewOrder = ({ history }) => {
                                 locale={enUs}
                                 okText="OK" 
                                 dismissText="CANCEL"
-                                value={pickupLocation}
-                                onChange={handlePickupLocation} 
+                                value={props.values.pickupLocation}
+                                onChange={e => props.setFieldValue("pickupLocation", e)} 
                                 
                             >
                                 <List.Item arrow="horizontal">
@@ -204,27 +181,28 @@ const NewOrder = ({ history }) => {
                             </Picker>
 
                             <Label>Payment Status</Label>
-                            <RadioContainer name="paymentStatus">
+                            <RadioContainer>
                                 {paymentStatusData.map(i => (
                                     <RadioList
-                                        className="my-radio" key={i.value} 
-                                        checked={paymentStatus === i.value}
-                                        onChange={() => setpaymentStatus(i.value)}>
+                                        name="paymentStatus"
+                                        className="my-radio" 
+                                        key={i.value} 
+                                        checked={props.values.paymentStatus === i.value}
+                                        onChange={() => props.setFieldValue("paymentStatus", i.value)}>
                                         {i.label}
                                     </RadioList>
                                 ))}
 
-                                <PaymentOptionCont style={showPicker}>
+                                <PaymentOptionCont style={{ display: (props.values.paymentStatus === 1) ? 'inline-block' : 'none' }}>
                                     <Picker name="paymentOption"
-                                        style={{ display: (paymentStatus === 1) ? 'block' : 'none' }}
                                         data={paymentOptions} 
                                         cols={1} 
                                         className="forss"
                                         locale={enUs}
                                         okText="OK" 
                                         dismissText="CANCEL"
-                                        value={paymentOption}
-                                        onChange={handlepaymentOption} 
+                                        value={props.values.paymentOption}
+                                        onChange={e => props.setFieldValue("paymentOption", e)} 
                                         
                                     >
                                         <List.Item arrow="horizontal"></List.Item>
@@ -232,13 +210,15 @@ const NewOrder = ({ history }) => {
                                 </PaymentOptionCont>
                             </RadioContainer>
 
-                            <Label>Discount</Label>
-                            <RadioContainer name="discountType">
+                            <Label>Discount</Label> 
+                            <RadioContainer>
                                 {discountData.map(i => (
                                     <RadioList
-                                        className="my-radio" key={i.value} 
-                                        checked={discount === i.value}
-                                        onChange={() => setDiscount(i.value)}>
+                                        name="discountType"
+                                        className="my-radio" 
+                                        key={i.value} 
+                                        checked={props.values.discountType === i.value}
+                                        onChange={() => props.setFieldValue("discountType", i.value)}>
                                         {i.label}
                                     </RadioList>
                                 ))}

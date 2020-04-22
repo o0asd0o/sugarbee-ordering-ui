@@ -53,6 +53,7 @@ const AddOrder = () => {
 
       <OrderForm onSubmit={handleSubmit}>
         <OrderDropdown
+            name="orderValue"
             id="orderValue"
             showSearch
             style={{ marginRight: '5px', width: '50%'  }}
@@ -68,7 +69,7 @@ const AddOrder = () => {
             <Option value="Salted Caramel Cake">Salted Caramel Cake</Option>
             <Option value="Sansrival Chips">Sansrival Chips</Option>
         </OrderDropdown>
-        <InputQuantity type="number" id="orderQuantity" onChange={handleChange}/>
+        <InputQuantity name="orderQuantity" type="number" id="orderQuantity" onChange={handleChange}/>
         <AddButton type="submit">Add #{orders.length + 1}</AddButton>
       </OrderForm>
     </Container>

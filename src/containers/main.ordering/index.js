@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SearchBar } from "antd-mobile";
+import { SearchBar } from "antd-mobile"; 
 import Header from "../../common.components/header";
 import Footer from "../../common.components/footer";
 import NavigationDrawer from "../../common.components/nav.drawer";

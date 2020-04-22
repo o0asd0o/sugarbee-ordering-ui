@@ -16,7 +16,7 @@ const initialOrder = {
     facebook: null,
     instagram: null,
     dateOrdered: null,
-    deadLine: null,
+    pickupDate: null,
     pickUpLocation: null,
     deliveryMethod: null,
     deliveryAddress: null,
