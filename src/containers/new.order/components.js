@@ -122,13 +122,13 @@ export const RadioList = styled(Radio)`
 `
 export const PaymentOptionCont = styled.div`
     width: 35%;
-    padding-top: 6px;
+    padding-top: 0px;
     .am-list-item .am-list-line .am-list-extra {
         flex-basis: 100%;
     }
     .am-list-item .am-list-line {
         padding-right: 0px;
-    }
+    }d
 `
 export const DiscountAmount = styled(InputItem)`
     width: 100px;
