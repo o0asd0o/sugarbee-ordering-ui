@@ -1,3 +1,7 @@
+import moment from "moment";
+
+const date = moment().toDate();
+
 export const orderDetails = [
     {
         id: 1,
@@ -24,18 +28,19 @@ export const orderList = [
         id: 1,
         customerName: 'Em Buenaventura',
         phone: '09663601467',
-        email: 'embuenaventura1@gmail.com',
-        telephone: '09663601467',
+        email: 'emb@gmail.com',
         facebook: 'Em Buenaventura',
         instagram: 'Em Buenaventura',
         items: [orderDetails],
-        dateOrdered: '2020-04-22',
-        pickupDate: '2020-04-22',
-        pickupLocation: "Magallanes",
-        deliveryMethod: "Lalamove",
+        dateOrdered: date,
+        pickupDate: date,
+        pickupLocation: ['Magallanes'],
+        deliveryMethod: ['Lalamove'],
+        paymentOption: ['bdo'],
         deliveryAddress: "11 Pureza St.",
-        discount: "percent",
-        paymentStatus: "paid",
+        discountType: 0,
+        discountAmount: 10,
+        paymentStatus: 0,
         request: "note card",
         specialOffer: "free cake",
         totalPrice: "3900"
@@ -45,19 +50,20 @@ export const orderList = [
         customerName: 'Dex Mel',
         phone: '09663601467',
         email: 'dexmel@gmail.com',
-        telephone: '09663601467',
         facebook: 'Dex Mel',
         instagram: 'Dex Mel',
         items: [orderDetails],
-        dateOrdered: '2020-04-22',
-        pickupDate: '2020-04-22',
-        pickupLocation: "Magallanes",
-        deliveryMethod: "Lalamove",
+        dateOrdered: date,
+        pickupDate: date,
+        pickupLocation: ['Magallanes'],
+        deliveryMethod: ['Lalamove'],
+        paymentOption: ['bdo'],
         deliveryAddress: "11 Pureza St.",
-        discount: "percent",
-        paymentStatus: "paid",
+        discountType: 1,
+        discountAmount: 10,
+        paymentStatus: 1,
         request: "note card",
         specialOffer: "free cake",
         totalPrice: "3900"
-    }     
+    }
 ];

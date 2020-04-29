@@ -1,7 +1,7 @@
 import React from "react"
 import { InputItem, Modal, Icon, DatePicker, List, Picker } from "antd-mobile";
 import { Formik } from "formik";
-import AddOrder from "./addorder"
+// import AddOrder from "./addorder"
 import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 
 import { Container, NavigationBar, NavLink, LayoutContainer, Label, LabelPicker, RadioContainer, RadioList, PaymentOptionCont, DiscountAmount, DoneButton } from "./components";
@@ -120,8 +120,8 @@ const NewOrder = ({ history }) => {
                                 onChange={props.handleChange("specialOffer")}
                                 children="Special Offer:" />
                             
-                            <Label>Order:</Label>
-                            <AddOrder name="order" />
+                            {/* <Label>Order:</Label>
+                            <AddOrder name="order" /> */}
 
                             <DatePicker name="dateOrdered"
                                 mode="date"
@@ -185,7 +185,6 @@ const NewOrder = ({ history }) => {
                                 {paymentStatusData.map(i => (
                                     <RadioList
                                         name="paymentStatus"
-                                        className="my-radio" 
                                         key={i.value} 
                                         checked={props.values.paymentStatus === i.value}
                                         onChange={() => props.setFieldValue("paymentStatus", i.value)}>
@@ -215,7 +214,6 @@ const NewOrder = ({ history }) => {
                                 {discountData.map(i => (
                                     <RadioList
                                         name="discountType"
-                                        className="my-radio" 
                                         key={i.value} 
                                         checked={props.values.discountType === i.value}
                                         onChange={() => props.setFieldValue("discountType", i.value)}>
