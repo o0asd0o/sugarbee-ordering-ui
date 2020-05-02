@@ -26,7 +26,7 @@ const Login = ({ history }) => {
             showErrorNotification({
                 message: "Oops",
                 description: "The credentials you put in are incorrect.",
-            })
+            });
         }
     };
 

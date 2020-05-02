@@ -13,6 +13,7 @@ const Header = (props) => {
     const onToggleCalendar = () => setShowCalendar(!showCalendar);
     const onDateSelected = (value, mode) => {
         setSelectedValue(value);
+        props.onDateChanged(value);
         if (!mode) {
             setTimeout(() => setShowCalendar(false), 300);
         }

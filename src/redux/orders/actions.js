@@ -3,6 +3,7 @@ import { createAction } from "redux-actions";
 const fetchOrders = createAction("FETCH_ORDERS");
 const fetchOrder = createAction("FETCH_ORDER");
 const saveOrder = createAction("SAVE_ORDER");
+const editOrder = createAction("EDIT_ORDER");
 
 export const getOrders = () => {
     return fetchOrders({
@@ -13,7 +14,19 @@ export const getOrders = () => {
     });
 };
 
-export const getOrderById = (identifer) => {
+export const getOrdersByDate = (date) => {
+    return fetchOrders({
+        request: {
+            params: {
+                createdDate: date,
+            },
+            url: "/orders",
+            method: "GET"
+        }
+    });
+};
+
+export const getOrderById = (identifier) => {
     return fetchOrder({
         request: {
             url: `/orders/${identifier}`,
@@ -32,4 +45,10 @@ export const saveOrderToDB = (order) => {
             }
         }
     })
+};
+
+export const editOrderByIndex = (index) => {
+    return editOrder({
+        currentEditIndex: index,
+    });
 }

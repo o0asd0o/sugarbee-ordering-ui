@@ -30,21 +30,28 @@ const initialOrder = {
 const initialState = {
     orders: [],
     currentOrder: initialOrder,
-    count: 0
-}
+    count: 0,
+    currentEditIndex: 0,
+};
 
 export default handleActions({
     FETCH_ORDERS_SUCCESS: (state, action) => {
         return {
             ...state,
-            orders: action.payload.data.orders,
-            count: action.payload.data.count
+            orders: action.payload.data,
+            count: action.payload.data.length
         }
     },
     FETCH_ORDER_SUCCESS: (state, action) => {
         return {
             ...state,
             currentOrder: action.payload.data.order
+        }
+    },
+    EDIT_ORDER: (state, action) => {
+        return {
+            ...state,
+            currentEditIndex: action.payload.currentEditIndex,
         }
     },
 }, initialState);

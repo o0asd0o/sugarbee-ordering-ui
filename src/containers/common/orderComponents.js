@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
 
 `
+
 export const NavigationBar = styled(NavBar)`
     background: #F1C40F
 `
@@ -16,8 +17,11 @@ export const NavLink = styled(Link)`
 
 export const LayoutContainer = styled(List)`
     height: auto;
-    overflow: autol
+    overflow: auto;
     margin-bottom: 40px;
+    .am-input-label{
+        width: 100px;
+    }
     input {
         font-size: 15px !important;
     }
@@ -102,7 +106,7 @@ export const RoundRadio = styled(Radio)`
 export const RadioContainer = styled.div`
     margin-top: 10px;
     margin-left: 15px;
-    
+
 `
 export const RadioList = styled(Radio)`
     color: #888;
@@ -121,6 +125,7 @@ export const RadioList = styled(Radio)`
     }
 `
 export const PaymentOptionCont = styled.div`
+    display: ${props => props.paymentStatus === 1 ? "inline-block" : "none"};
     width: 35%;
     padding-top: 0px;
     .am-list-item .am-list-line .am-list-extra {
@@ -128,7 +133,7 @@ export const PaymentOptionCont = styled.div`
     }
     .am-list-item .am-list-line {
         padding-right: 0px;
-    }d
+    }
 `
 export const DiscountAmount = styled(InputItem)`
     width: 100px;
@@ -139,4 +144,58 @@ export const DoneButton = styled.input`
     background: transparent;
     border-style: solid;
     border-color: transparent;
+`
+
+export const ProductContainer = styled.div`
+    padding: 0 10px;
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+            margin-right: auto;
+            margin-bottom: 0;
+        }
+    }
+`
+
+export const ProductList = styled.div`
+    margin-top: 10px;
+    color: #222;
+    .product-item {
+        display: flex;
+        margin: 0 12px;
+        p.name {
+            margin-right: auto;
+        }
+    }
+    .product-total {
+        display: flex;
+        margin: 0 12px;
+        border-top: 1px solid rgba(0,0,0,0.3);
+        padding-top: 5px;
+        p.total-label {
+            margin-right: auto;
+        }
+    }
+`
+
+export const AddProductDiv = styled.div`
+    .product-dropdown {
+        width: 84%;
+        margin-right: 1%;
+        box-sizing: border-box;
+    }
+    .product-quantity {
+        width: 15%;
+    }
+`
+
+export const SubmitContainer = styled.div`
+    display: flex;
+    padding: 10px 0;
+    flex-direction: row-reverse;
+    a {
+        width: 100px;
+    }
 `
