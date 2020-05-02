@@ -3,7 +3,7 @@ import { List } from "antd-mobile";
 
 const Item = List.Item;
 
-export const OrderList = styled(Item) `
+export const OrderItem = styled(Item) `
     border-bottom: 1px solid #EAECEE;
 `
 export const CustomerName = styled.p`
@@ -24,7 +24,7 @@ export const Price = styled.p`
     margin-bottom: 0px;
 `
 export const ModalBody = styled.div`
-    
+
 `
 export const OrderTable = styled.table`
     width: 100%;

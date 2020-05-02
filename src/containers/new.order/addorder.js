@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+
+/* REMOVE THIS FILE, MOVE THE MODAL TO: AddOrderModal.js*/
+
+
+import React, { useState } from "react";
 import { Select } from "antd";
 import { Container, OrderListContainer, OrderList, OrderName, OrderQuantity, DeleteButton, OrderForm, InputQuantity, OrderDropdown, AddButton } from "./components";
 
@@ -6,8 +10,8 @@ import { Container, OrderListContainer, OrderList, OrderName, OrderQuantity, Del
 const { Option } = Select;
 
 const AddOrder = () => {
-  const [orderQuantity, setorderQuantity] = useState('');
-  const [orderValue, setorderValue] = useState('');
+  const [orderQuantity, setorderQuantity] = useState("");
+  const [orderValue, setorderValue] = useState("");
   const [orders, setOrder] = useState([])
 
   const handleChange = e => {
@@ -19,16 +23,16 @@ const AddOrder = () => {
   }
 
   const handleSubmit = e => {
-    e.preventDefault();    
+    e.preventDefault();
     const order = {
       quantity: orderQuantity,
       name: orderValue
     }
-    
+
     if(!orderQuantity) return;
     setOrder([...orders, order]);
-    document.getElementById('orderQuantity').value = '';
-    document.getElementById('orderValue').value = ''
+    document.getElementById("orderQuantity").value = "";
+    document.getElementById("orderValue").value = ""
   }
 
   const handleDelete = e => {
@@ -45,7 +49,7 @@ const AddOrder = () => {
             <OrderList key={order.quantity} id={i}>
               <OrderName>{order.name}</OrderName>
               <OrderQuantity>{order.quantity}</OrderQuantity>
-              <DeleteButton className="delete-order" onClick={handleDelete} >-</DeleteButton>              
+              <DeleteButton className="delete-order" onClick={handleDelete} >-</DeleteButton>
             </OrderList>
           ))
         }
@@ -56,7 +60,7 @@ const AddOrder = () => {
             name="orderValue"
             id="orderValue"
             showSearch
-            style={{ marginRight: '5px', width: '50%'  }}
+            style={{ marginRight: "5px", width: "50%"  }}
             placeholder="Pick your order"
             optionFilterProp="children"
             onChange={handleSelectChange}
@@ -75,5 +79,7 @@ const AddOrder = () => {
     </Container>
   )
 }
+
+/* REMOVE THIS FILE, MOVE THE MODAL TO: AddOrderModal.js*/
 
 export default AddOrder;

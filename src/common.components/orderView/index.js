@@ -1,36 +1,46 @@
 import React from "react";
-import { CustomerName, OrderList, Orders, ContactNum, Price } from "./components";
+import { CustomerName, OrderItem, Orders, ContactNum, Price } from "./components";
+import { connect } from "react-redux";
+import { push } from "connected-react-router";
 import { orderList, orderDetails } from "../../utils/dummy.array";
-import { Link } from "react-router-dom"
- 
-const OrderViewCont = (props) => {
+import { editOrderByIndex } from "../../redux/orders/actions";
+
+const OrderView = (props) => {
     return (
         <div>
-            <Link to={`/readonly`}>
             {orderList
-            .sort((a, b) => a.customerName.localeCompare(b.customerName))
-            .map((order, index) => (
-                    <OrderList
+                .sort((a, b) => a.customerName.localeCompare(b.customerName))
+                .map((order, index) => (
+                    <OrderItem
                         key={order.id}
                         wrap
                         multipleLine align="top"
-                        style={{ background: (index%2) ? 'none' : '#FCF3CF' }}
-                        onClick={() => {props.getDataList(order); console.log(order); }}
-                    >
-                        <CustomerName>{order.customerName}</CustomerName>
-                        <ContactNum>{order.phone}</ContactNum>
-                        {orderDetails.map(item => (
-                            <Orders>{item.quantity} x {item.productName}</Orders>
-                        ))}
-                        <Price>Php {order.totalPrice}</Price>
-                    </OrderList>
-            ))}
-            </Link>
+                        style={{ background: (index % 2) ? "none" : "#FCF3CF" }}
+                        onClick={() => props.editOrder(index)}>
+                            <CustomerName>{order.customerName}</CustomerName>
+                            <ContactNum>{order.phone}</ContactNum>
+                            {orderDetails.map(item => (
+                                <Orders key={item.productName}>{item.quantity} x {item.productName}</Orders>
+                            ))}
+                            <Price>Php {order.totalPrice}</Price>
+                    </OrderItem>
+                ))
+            }
         </div>
     )
 };
 
+const mapStateToProps = (state) => {
+    return {};
+};
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        editOrder: (index) => {
+            dispatch(editOrderByIndex(index))
+            push("/editorder");
+        }
+    };
+};
 
-
-export default OrderViewCont;
+export default connect(mapStateToProps, mapDispatchToProps)(OrderView);

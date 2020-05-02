@@ -1,47 +1,33 @@
-import React from "react"
+import React from "react";
 import { InputItem, Modal, Icon, DatePicker, List, Picker } from "antd-mobile";
 import { Formik } from "formik";
-// import AddOrder from "./addorder"
-import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
-
-import { Container, NavigationBar, NavLink, LayoutContainer, Label, LabelPicker, RadioContainer, RadioList, PaymentOptionCont, DiscountAmount, DoneButton } from "./components";
+import { Select } from 'antd';
+import { Container, NavigationBar, NavLink, LayoutContainer, Label, LabelPicker,
+    RadioContainer, RadioList, PaymentOptionCont, DiscountAmount, DoneButton } from "./../common/orderComponents";
+import InputProduct from "./AddOrderComponent";
 import { deliveryMethods, storeLocations, paymentOptions, paymentStatusData, discountData } from "../../utils/values.dropdown";
+import { products } from "../../utils/values.products";
+import { newOrderForm as initialFormValues } from "../../utils/values.initial";
+import enUs from "antd-mobile/lib/date-picker/locale/en_US";
 
-import moment from "moment";
 
-// TODO/NOTICE: NOT YET DONE WITH ALL THE FIELDS...
-
-// use the FF:
-
-const date = moment().toDate();
-
+const { Option, OptGroup } = Select;
 const notification = Modal.alert;
 const showErrorNotification = ({ message, description }) => {
     notification(message, description, [{ text: "OK" }]);
 };
 
 const NewOrder = ({ history }) => {
-    const initialValues = {
-        /* TODO: Assign initial values */
-        customerName: '',
-        phoneNumber: '',
-        email: '',
-        facebook: '',
-        instagram: '',
-        deliveryAddress: '',
-        request: '',
-        specialOffer: '',
-        orderValue: '',
-        orderQuantity: '',
-        dateOrdered: date,
-        pickupDate: date,
-        deliveryMethod: ['Lalamove'],
-        pickupLocation: ['Magallanes'],
-        paymentOption: ['bdo'],
-        paymentStatus: 0,
-        discountType: 0,
-        discountAmount: ''
-    };    
+    // TODO: products should be based on the reponse of orders request.
+    const productOptions = products.map((product) => {
+        return <OptGroup label={product.name} key={product.name}>
+            {product.items.map((subItem) => (
+                <Option key={subItem.name} value={subItem.name.replace(/ /g,"_")}>
+                    {subItem.name}
+                </Option>
+            ))}
+        </OptGroup>
+    });
 
     const handleSubmit = async (values, actions) => {
         actions.setSubmitting(true);
@@ -60,6 +46,7 @@ const NewOrder = ({ history }) => {
             })
         }
     };
+
     return (
         <Container>
             <NavigationBar icon={<Icon type="left" />}
@@ -70,7 +57,7 @@ const NewOrder = ({ history }) => {
                 </NavLink>]}> {/*this should be a submit button*/}
                 {"Order #001"}
             </NavigationBar>
-            <Formik onSubmit={handleSubmit} initialValues={initialValues}>
+            <Formik onSubmit={handleSubmit} initialValues={initialFormValues}>
                 {props => (
                     <form onSubmit={props.handleSubmit}>
                         <LayoutContainer>
@@ -119,9 +106,10 @@ const NewOrder = ({ history }) => {
                                 placeholder="e.g. Free brownies"
                                 onChange={props.handleChange("specialOffer")}
                                 children="Special Offer:" />
-                            
-                            {/* <Label>Order:</Label>
-                            <AddOrder name="order" /> */}
+
+                            <InputProduct productOptions={productOptions}
+                                orders={props.values.orders}
+                                onAddProduct={(value) => props.setFieldValue("orders", [...props.values.orders, value])}/>
 
                             <DatePicker name="dateOrdered"
                                 mode="date"
@@ -129,11 +117,10 @@ const NewOrder = ({ history }) => {
                                 extra="Optional"
                                 locale={enUs}
                                 value={props.values.dateOrdered}
-                                onChange={e => props.setFieldValue("dateOrdered", e)}
-                            >
-                                <List.Item arrow="horizontal">
-                                <LabelPicker>Date Ordered</LabelPicker>
-                                </List.Item>
+                                onChange={e => props.setFieldValue("dateOrdered", e)}>
+                                    <List.Item arrow="horizontal">
+                                        <LabelPicker>Date Ordered</LabelPicker>
+                                    </List.Item>
                             </DatePicker>
 
                             <DatePicker name="pickupDate"
@@ -142,42 +129,37 @@ const NewOrder = ({ history }) => {
                                 extra="Optional"
                                 locale={enUs}
                                 value={props.values.pickupDate}
-                                onChange={e => props.setFieldValue("pickupDate", e)}
-                            >
-                                <List.Item arrow="horizontal">
-                                <LabelPicker>Pickup Date</LabelPicker>
-                                </List.Item>
+                                onChange={e => props.setFieldValue("pickupDate", e)}>
+                                    <List.Item arrow="horizontal">
+                                        <LabelPicker>Pickup Date</LabelPicker>
+                                    </List.Item>
                             </DatePicker>
 
                             <Picker name="deliveryMethod"
-                                data={deliveryMethods} 
-                                cols={1} 
-                                className="forss"
+                                data={deliveryMethods}
+                                cols={1}
                                 locale={enUs}
-                                okText="OK" 
+                                okText="OK"
                                 dismissText="CANCEL"
                                 value={props.values.deliveryMethod}
-                                onChange={e => props.setFieldValue("deliveryMethod", e)} 
-                            >
-                                <List.Item arrow="horizontal">
-                                <LabelPicker>Delivery Method</LabelPicker>
-                                </List.Item>
+                                onChange={e => props.setFieldValue("deliveryMethod", e)}>
+                                    <List.Item arrow="horizontal">
+                                        <LabelPicker>Delivery Method</LabelPicker>
+                                    </List.Item>
                             </Picker>
 
                             <Picker name="pickupLocation"
-                                data={storeLocations} 
-                                cols={1} 
+                                data={storeLocations}
+                                cols={1}
                                 className="forss"
                                 locale={enUs}
-                                okText="OK" 
+                                okText="OK"
                                 dismissText="CANCEL"
                                 value={props.values.pickupLocation}
-                                onChange={e => props.setFieldValue("pickupLocation", e)} 
-                                
-                            >
-                                <List.Item arrow="horizontal">
-                                <LabelPicker>Pickup Location</LabelPicker>
-                                </List.Item>
+                                onChange={e => props.setFieldValue("pickupLocation", e)}>
+                                    <List.Item arrow="horizontal">
+                                        <LabelPicker>Pickup Location</LabelPicker>
+                                    </List.Item>
                             </Picker>
 
                             <Label>Payment Status</Label>
@@ -185,39 +167,37 @@ const NewOrder = ({ history }) => {
                                 {paymentStatusData.map(i => (
                                     <RadioList
                                         name="paymentStatus"
-                                        key={i.value} 
+                                        key={i.value}
                                         checked={props.values.paymentStatus === i.value}
                                         onChange={() => props.setFieldValue("paymentStatus", i.value)}>
-                                        {i.label}
+                                            {i.label}
                                     </RadioList>
                                 ))}
 
-                                <PaymentOptionCont style={{ display: (props.values.paymentStatus === 1) ? 'inline-block' : 'none' }}>
+                                <PaymentOptionCont paymentStatus={props.values.paymentStatus}>
                                     <Picker name="paymentOption"
-                                        data={paymentOptions} 
-                                        cols={1} 
+                                        data={paymentOptions}
+                                        cols={1}
                                         className="forss"
                                         locale={enUs}
-                                        okText="OK" 
+                                        okText="OK"
                                         dismissText="CANCEL"
                                         value={props.values.paymentOption}
-                                        onChange={e => props.setFieldValue("paymentOption", e)} 
-                                        
-                                    >
-                                        <List.Item arrow="horizontal"></List.Item>
+                                        onChange={e => props.setFieldValue("paymentOption", e)}>
+                                            <List.Item arrow="horizontal"></List.Item>
                                     </Picker>
                                 </PaymentOptionCont>
                             </RadioContainer>
 
-                            <Label>Discount</Label> 
+                            <Label>Discount</Label>
                             <RadioContainer>
                                 {discountData.map(i => (
                                     <RadioList
                                         name="discountType"
-                                        key={i.value} 
+                                        key={i.value}
                                         checked={props.values.discountType === i.value}
                                         onChange={() => props.setFieldValue("discountType", i.value)}>
-                                        {i.label}
+                                            {i.label}
                                     </RadioList>
                                 ))}
 

@@ -29,11 +29,11 @@ export const paymentOptions = [{
 }];
 
 export const paymentStatusData = [
-    { value: 0, label: 'Unpaid' },
-    { value: 1, label: 'Paid' },
+    { value: 0, label: "Unpaid" },
+    { value: 1, label: "Paid" },
 ];
 
 export  const discountData = [
-    { value: 0, label: 'Percent' },
-    { value: 1, label: 'Amount' },
+    { value: 0, label: "Percent" },
+    { value: 1, label: "Amount" },
 ];
