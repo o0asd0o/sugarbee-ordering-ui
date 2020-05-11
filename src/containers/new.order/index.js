@@ -10,7 +10,6 @@ import { products } from "../../utils/values.products";
 import { newOrderForm as initialFormValues } from "../../utils/values.initial";
 import enUs from "antd-mobile/lib/date-picker/locale/en_US";
 
-
 const { Option, OptGroup } = Select;
 const notification = Modal.alert;
 const showErrorNotification = ({ message, description }) => {
@@ -107,8 +106,9 @@ const NewOrder = ({ history }) => {
                                 onChange={props.handleChange("specialOffer")}
                                 children="Special Offer:" />
 
-                            <InputProduct productOptions={productOptions}
+                            <InputProduct productOptions={productOptions} 
                                 orders={props.values.orders}
+                                onEdit={(value) => props.setFieldValue("orders", value)}
                                 onAddProduct={(value) => props.setFieldValue("orders", [...props.values.orders, value])}/>
 
                             <DatePicker name="dateOrdered"
