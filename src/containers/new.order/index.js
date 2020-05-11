@@ -3,7 +3,7 @@ import { InputItem, Modal, Icon, DatePicker, List, Picker } from "antd-mobile";
 import { Formik } from "formik";
 import { Select } from 'antd';
 import { Container, NavigationBar, NavLink, LayoutContainer, Label, LabelPicker,
-    RadioContainer, RadioList, PaymentOptionCont, DiscountAmount, DoneButton } from "./../common/orderComponents";
+    RadioContainer, RadioList, PaymentOptionCont, DiscountAmount, SubmitButton } from "./../common/orderComponents";
 import InputProduct from "./AddOrderComponent";
 import { deliveryMethods, storeLocations, paymentOptions, paymentStatusData, discountData } from "../../utils/values.dropdown";
 import { products } from "../../utils/values.products";
@@ -50,11 +50,7 @@ const NewOrder = ({ history }) => {
         <Container>
             <NavigationBar icon={<Icon type="left" />}
               leftContent={[<NavLink to="/ordering">Back</NavLink>]}
-              rightContent={[
-                <NavLink to="/ordering">
-                    <DoneButton type="submit" value="Done"></DoneButton>
-                </NavLink>]}> {/*this should be a submit button*/}
-                {"Order #001"}
+              rightContent={"Order #001"}> {/*this should be a submit button*/}
             </NavigationBar>
             <Formik onSubmit={handleSubmit} initialValues={initialFormValues}>
                 {props => (
@@ -106,9 +102,9 @@ const NewOrder = ({ history }) => {
                                 onChange={props.handleChange("specialOffer")}
                                 children="Special Offer:" />
 
-                            <InputProduct productOptions={productOptions} 
+                            <InputProduct productOptions={productOptions}
                                 orders={props.values.orders}
-                                onEdit={(value) => props.setFieldValue("orders", value)}
+                                onEditOrders={(orders) => props.setFieldValue("orders", orders)}
                                 onAddProduct={(value) => props.setFieldValue("orders", [...props.values.orders, value])}/>
 
                             <DatePicker name="dateOrdered"
@@ -206,6 +202,9 @@ const NewOrder = ({ history }) => {
                                     placeholder="e.g. 100"
                                     onChange={props.handleChange("discountAmount")} />
                             </RadioContainer>
+                            <SubmitButton type={"submit"}
+                                value={"Create Order"}
+                                disabled={props.isSubmitting}  />
                         </LayoutContainer>
                     </form>
                 )}

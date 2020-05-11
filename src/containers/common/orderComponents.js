@@ -14,7 +14,6 @@ export const NavLink = styled(Link)`
 export const LayoutContainer = styled(List)`
     height: auto;
     overflow: auto;
-    margin-bottom: 40px;
     .am-input-label{
         width: 100px;
     }
@@ -197,5 +196,13 @@ export const CounterDiv = styled.div`
         font-weight: bold;
         margin-bottom: 0px;
     }
+`
 
+export const SubmitButton = styled.input`
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 0;
+    border: none;
+    background: #F1C40F;
+    color: white;
 `
