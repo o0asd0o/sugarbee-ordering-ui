@@ -4,9 +4,9 @@ import { Select, InputNumber } from "antd";
 import { products } from "../../utils/values.products";
 import { ProductContainer, ProductList, AddProductDiv, SubmitContainer } from "./../common/orderComponents";
 
-import AddOrderModal from "./AddOrderModal";
+import EditOrderModal from "./EditOrderModal";
 
-const InputProduct = ({ productOptions, orders, onAddProduct, onEdit }) => {
+const InputProduct = ({ productOptions, orders, onAddProduct, onEditOrders, onSaveEditedOrders }) => {
     const [selectedItem, setSelectedItem] = useState("Apple_Crumble");
     const [itemQuantity, setItemQuantity] = useState(1);
 
@@ -21,8 +21,8 @@ const InputProduct = ({ productOptions, orders, onAddProduct, onEdit }) => {
     );
 
     const ProductListItems = ({ orders }) => {
-        const component = orders.length > 0 ? orders.map((order) => (
-            <div className="product-item" key={order.name}>
+        const component = orders.length > 0 ? orders.map((order, index) => (
+            <div className="product-item" key={`${order.name}-${index}`}>
                 <p className="name">{order.quantity} x {order.name}</p>
                 <p className="price">{order.price * (order.quantity || 1)}</p>
             </div>
@@ -67,10 +67,11 @@ const InputProduct = ({ productOptions, orders, onAddProduct, onEdit }) => {
             <div className="header">
                 <p>Orders</p>
                 <Button type="ghost" size="small" onClick={() => setVisible(true)} inline>Edit</Button>
-                <AddOrderModal 
-                    visible={visible} 
+                <EditOrderModal
+                    visible={visible}
                     closeModal={closeModal}
-                    onEdit={onEdit}
+                    onEditOrders={onEditOrders}
+                    onSaveEditedOrders={onSaveEditedOrders}
                     orders={orders}  />
             </div>
 
