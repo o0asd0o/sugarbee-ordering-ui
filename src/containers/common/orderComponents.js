@@ -1,20 +1,16 @@
 import styled from "styled-components";
-import { NavBar, List, Radio, InputItem } from "antd-mobile";
-import { Select } from "antd";
+import { NavBar, List, Radio, InputItem, Modal } from "antd-mobile";
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
 
 `
-
 export const NavigationBar = styled(NavBar)`
     background: #F1C40F
 `
-
 export const NavLink = styled(Link)`
     color: white;
 `
-
 export const LayoutContainer = styled(List)`
     height: auto;
     overflow: auto;
@@ -28,63 +24,6 @@ export const LayoutContainer = styled(List)`
     div.am-input-label {
         font-size: 15px !important;
     }
-`
-export const OrderListContainer = styled.div`
-    margin-left: 20px;
-    margin-right: 20px;
-`
-export const OrderList = styled.div`
-
-`
-export const OrderName = styled.p`
-    font-size: 15px;
-    font-weight: bold;
-    display: inline-block;
-    width: 70%;
-    margin-bottom: 0px;
-`
-export const OrderQuantity = styled.p`
-    font-size: 15px;
-    font-weight: bold;
-    display: inline-block;
-    width: 20%;
-    margin-bottom: 0px;
-`
-
-export const DeleteButton = styled.button`
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    font-weight: 900;
-    color: red;
-    display: inline-block;
-    width: 10%;
-`
-export const OrderForm = styled.form`
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
-`
-export const OrderDropdown = styled(Select)`
-    width: 50%;
-    margin-right: 5px;
-`
-
-export const InputQuantity = styled.input`
-    width: 20%;
-    border-radius: 5px;
-    border: solid 1px #ccc;
-    margin-right: 5px;
-    padding: 4px;
-`
-export const AddButton = styled.button `
-    border-radius: 5px;
-    border-style: solid;
-    color: white;
-    background: #F1C40F;
-    border-color: #F1C40F;
-    width: 25%;
-    padding: 3px;
 `
 export const Label = styled.p`
     font-size: 15px;
@@ -145,7 +84,6 @@ export const DoneButton = styled.input`
     border-style: solid;
     border-color: transparent;
 `
-
 export const ProductContainer = styled.div`
     padding: 0 10px;
     .header {
@@ -158,7 +96,6 @@ export const ProductContainer = styled.div`
         }
     }
 `
-
 export const ProductList = styled.div`
     margin-top: 10px;
     color: #222;
@@ -179,7 +116,6 @@ export const ProductList = styled.div`
         }
     }
 `
-
 export const AddProductDiv = styled.div`
     .product-dropdown {
         width: 84%;
@@ -198,4 +134,68 @@ export const SubmitContainer = styled.div`
     a {
         width: 100px;
     }
+`
+export const EditModal = styled(Modal)`
+    .am-modal-header {
+        padding: 0px;
+    }
+`
+export const EditProductList = styled(List)`
+    .am-list-item .am-list-line .am-list-content {
+        font-size: 14px;
+    }
+`
+export const EditProductListItems = styled.div`
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid #EAECEE;
+    padding: 10px 15px 10px 15px;
+    .product-name {
+        width: 70%;
+        text-align: left;
+        margin-bottom: 0px;
+        align-self: center;
+        color: black;
+    }
+    .delete-button {
+        width: auto;
+        border: 0;
+        background: none;
+        align-self: center;
+        color: red;
+    }
+`
+export const CounterDiv = styled.div`
+    min-width: 100px;
+    width: auto;
+    margin-right: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    align-self: center;
+
+    .incrementButton {
+        width: 35%;
+        border: solid 1px #424949;
+        border-radius: 5px;
+        background: none;
+        color: #424949;
+        margin-left: 3px;
+    }
+    .decrementButton {
+        width: 35%;
+        border: solid 1px #424949;
+        border-radius: 5px;
+        background: none;
+        color: #424949;
+        margin-right: 3px;
+    }
+    .count {
+        width: 30%;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 0px;
+    }
+
 `

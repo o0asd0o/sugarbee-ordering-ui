@@ -4,9 +4,14 @@ import { Select, InputNumber } from "antd";
 import { products } from "../../utils/values.products";
 import { ProductContainer, ProductList, AddProductDiv, SubmitContainer } from "./../common/orderComponents";
 
-const InputProduct = ({ productOptions, orders, onAddProduct}) => {
+import AddOrderModal from "./AddOrderModal";
+
+const InputProduct = ({ productOptions, orders, onAddProduct, onEdit }) => {
     const [selectedItem, setSelectedItem] = useState("Apple_Crumble");
     const [itemQuantity, setItemQuantity] = useState(1);
+
+    const [visible, setVisible] = useState(false);
+    const closeModal = () => setVisible(false);
 
     const renderTotalComponent = (total) => (
         <div className="product-total" key={"total"}>
@@ -61,7 +66,12 @@ const InputProduct = ({ productOptions, orders, onAddProduct}) => {
         <ProductContainer>
             <div className="header">
                 <p>Orders</p>
-                <Button type="ghost" size="small" onClick={() => {/* TODO: MODAL */}} inline>Edit</Button>
+                <Button type="ghost" size="small" onClick={() => setVisible(true)} inline>Edit</Button>
+                <AddOrderModal 
+                    visible={visible} 
+                    closeModal={closeModal}
+                    onEdit={onEdit}
+                    orders={orders}  />
             </div>
 
             <ProductList>
