@@ -36,6 +36,7 @@ const initialState = {
 
 export default handleActions({
     FETCH_ORDERS_SUCCESS: (state, action) => {
+        console.log("2")
         return {
             ...state,
             orders: action.payload.data,
@@ -54,4 +55,7 @@ export default handleActions({
             currentEditIndex: action.payload.currentEditIndex,
         }
     },
+    default: (state) => {
+        return state;
+    }
 }, initialState);

@@ -5,25 +5,14 @@ const fetchOrder = createAction("FETCH_ORDER");
 const saveOrder = createAction("SAVE_ORDER");
 const editOrder = createAction("EDIT_ORDER");
 
-export const getOrders = () => {
-    return fetchOrders({
-        request: {
-            url: "/orders",
-            method: "GET"
-        }
-    });
-};
-
 export const getOrdersByDate = (date) => {
+    console.log("1")
     return fetchOrders({
         request: {
-            params: {
-                createdDate: date,
-            },
-            url: "/orders",
+            url: `/order/find/${date}`,
             method: "GET"
-        }
-    });
+        },
+    })
 };
 
 export const getOrderById = (identifier) => {
