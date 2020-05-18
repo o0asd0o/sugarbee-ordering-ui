@@ -13,7 +13,7 @@ import { Container, ViewContainer } from "./components";
 
 import { getOrdersByDate } from "../../redux/orders/actions";
 
-const MainOrdering = ({ fetchOrders }) => {
+const MainOrdering = ({ fetchOrders, order }) => {
     const initialDate = moment();
 
     const [drawerVisible, setDrawerVisible] = useState(false);
@@ -22,9 +22,9 @@ const MainOrdering = ({ fetchOrders }) => {
 
     useEffect(() => {
         const executeFetchOrders = () => {
-            fetchOrders(calendarDate.format("YYYY-MM-DD"));
+            fetchOrders(calendarDate.format("YYYY-MM-DD"))
         };
-        executeFetchOrders();
+        executeFetchOrders()
     }, [calendarDate, fetchOrders]);
 
     const onViewChanged = (event) => {
@@ -34,9 +34,10 @@ const MainOrdering = ({ fetchOrders }) => {
 
     return (
         <Container>
+            {console.log(order)}
             <NavigationDrawer visible={drawerVisible} onExitNav={() => setDrawerVisible(false)}>
                 <Header toggleSideMenu={() => setDrawerVisible(!drawerVisible)} onDateChanged={(value) => setCalendarDate(value)}/>
-                <MainContainer selectedView={selectedView} />
+                <MainContainer selectedView={selectedView} order={order} />
             </NavigationDrawer>
             <Footer onSelectedViewChanged={onViewChanged}/>
         </Container>
@@ -44,19 +45,22 @@ const MainOrdering = ({ fetchOrders }) => {
 };
 
 const MainContainer = (props) => {
-    return (<div>
+    return (
+    <div>
         <SearchBar cancelText="Cancel" placeholder="Search" />
         <ViewContainer>
             {props.selectedView === 0
-                ? <ItemView />
-                : <OrderView />}
+                ? <ItemView ordersList = {props.order} />
+                : <OrderView ordersList = {props.order} />}
         </ViewContainer>
     </div>)
 }
 
-
 const mapStateToProps = (state) => {
-    return {};
+    console.log(state.orders.orders);
+    return {
+        order: state.orders.orders
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,22 +1,23 @@
 import React from "react";
 import { ItemList, OrderName } from "./components"
-import { orderDetails } from "../../utils/dummy.array";
+// import { orderList } from "../../utils/dummy.array";
 
 
-const ItemView = () => (
+const ItemView = (props) => (
     <div>
-        {orderDetails
-            .sort((a, b) => b.quantity - a.quantity)
-            .map(item => ( 
-            <ItemList
-                key={item.id}
-                wrap
-                multipleLine align="top" 
-                extra={item.quantity}           
-            >
-                <OrderName>{item.productName}</OrderName>
-            </ItemList>
-        ))}
+        {props.ordersList.map(orders => ( 
+            orders.orderItems
+                .sort((a, b) => b.quantity - a.quantity)
+                .map(item => ( 
+                <ItemList
+                    key={item.identifier}
+                    wrap
+                    multipleLine align="top" 
+                    extra={item.quantity}           
+                >
+                    <OrderName>{item.itemName}</OrderName>
+                </ItemList>
+        ))))}
     </div>    
 );
 
